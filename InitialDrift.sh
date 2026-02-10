@@ -2,5 +2,5 @@
 xdotool mousemove 1280 1024
 cd projet/InitialDrift
 touch highscore
-javac InitialDrift.java
-java InitialDrift
+javac Main.java
+java Main
