@@ -28,6 +28,8 @@ package MG2D.geometrie;
 
 import java.awt.Graphics;
 
+import MG2D.Couleur;
+
 /**
  * Cette classe permet la création de points.<br />
  * Un Point est défini par deux entiers (abscisse et ordonnée).

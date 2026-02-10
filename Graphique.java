@@ -10,7 +10,6 @@ import MG2D.geometrie.*;
 import MG2D.geometrie.Point;
 import MG2D.audio.*;
 import MG2D.*;
-import MG2D.FenetrePleinEcran;
 
 public class Graphique {
 
@@ -269,8 +268,9 @@ public class Graphique {
     }
     
     public static void lectureMusiqueFond() {
-    	musiqueFond = new Bruitage ("sound/bg/"+tableauMusiques[(int)(Math.random()*cptMus)]);
-    	musiqueFond.lecture();
+    	return ;
+		//musiqueFond = new Bruitage ("sound/bg/"+tableauMusiques[(int)(Math.random()*cptMus)]);
+    	//musiqueFond.lecture();
     }
 	
 	public static void stopMusiqueFond(){

@@ -1,6 +1,6 @@
 import MG2D.*;
 import MG2D.geometrie.*;
-import MG2D.Clavier;
+
 import java.util.ArrayList;
 import java.util.Random; 
 import java.awt.Font;

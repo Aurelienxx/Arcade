@@ -38,6 +38,8 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
+import MG2D.Couleur;
+
 /**
  * Cette classe permet la création de textures.<br />
  * Une texture est une image rectangulaire qui peut être affichée dans la zone d'affichage. La transparence est gérée. Les formats d'images supportées sont : gif, jpg, png et bmp.<br />

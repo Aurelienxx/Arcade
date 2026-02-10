@@ -28,6 +28,8 @@ package MG2D.geometrie;
 
 import java.awt.Graphics;
 
+import MG2D.Couleur;
+
 /**
  * Classe abstraite destinée à représenter une forme géométrique.
  * <br /><br />

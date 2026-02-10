@@ -31,6 +31,8 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
+import MG2D.Couleur;
+
 /**
  * Cette classe permet la création de textes.<br />
  * Un Texte est définie par une chaîne de caractères, d'une police de texte et d'un Point.

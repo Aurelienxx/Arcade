@@ -36,6 +36,8 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
+import MG2D.Couleur;
+
 /**
  * Cette classe l'affichage d'images animées dans vos applications. Elle ne permet pas d'intégrer des gifs animés directement. Les images que vous voulez afficher doivent être dans un format supporté par MG2D (jpg, png, etc.). L'animation doit être un ensemble d'images dont le nom est composé d'une racine commune à toutes les images suivi d'un numéro. Par exemple, une nimation pourra être composée des images : "img/perso1.png", "img/perso2.png", ..., "img/perso15.png". Ces informations (racine commune du nom de fichier, numéro de la première image, de la dernière, extension du fichier) vous eront nécessaires pour la création d'une animation lors de l'appel au contructeur. <br />
  * Les numéros de première et dernière image peuvent être écrit de manière classique ou formater de manière à ce que le nombre de caractère utilisé soit toujours constant. Exemple : "img/perso001.png", "img/perso002.png", ..., "img/perso015.png". Dans ce cas, bien définir le numéro de première image à "001" et le numéro de dernière image à "015".<br />

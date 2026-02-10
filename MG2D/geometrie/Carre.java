@@ -30,6 +30,8 @@ import java.awt.Graphics;
 
 import java.lang.RuntimeException;
 
+import MG2D.Couleur;
+
 /**
  * Cette classe permet la création de carrés.<br />
  * Cette classe hérite de Rectangle. En effet, il s'agit d'un rectangle particulier où la hauteur et la largeur sont égales.

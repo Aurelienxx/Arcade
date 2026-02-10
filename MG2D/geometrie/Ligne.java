@@ -28,6 +28,8 @@ package MG2D.geometrie;
 
 import java.awt.Graphics;
 
+import MG2D.Couleur;
+
 /**
  * Cette classe permet la création de lignes.<br />
  * Une ligne est définie par deux Points.

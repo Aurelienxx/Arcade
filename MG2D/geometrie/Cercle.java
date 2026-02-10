@@ -28,6 +28,8 @@ package MG2D.geometrie;
 
 import java.awt.Graphics;
 
+import MG2D.Couleur;
+
 /**
  * Cette classe permet la création de cercles.<br />
  * Cette classe est un cas particulier de la classe Ovale. Un ovale est décrit grâce à un point central, une largeur et une hauteur. Le cercle est décrit grâce à un point central et un diamètre (largeur=hauteur).<br />

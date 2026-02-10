@@ -28,6 +28,8 @@ package MG2D.geometrie;
 
 import java.awt.Graphics;
 
+import MG2D.Couleur;
+
 /**
  * Cette classe permet la création d'ovales.<br />
  * Un ovale est défini par un point central, une largeur, une hauteur et un booléen qui défini si la forme doit être dessinée pleine ou non.

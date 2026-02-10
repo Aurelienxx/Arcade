@@ -5,7 +5,6 @@ import MG2D.geometrie.Point;
 import MG2D.geometrie.Rectangle;
 import MG2D.geometrie.Texture;
 import MG2D.geometrie.Texte;
-import MG2D.geometrie.Couleur;
 
 import java.awt.Color;
 import java.awt.Font;
