@@ -268,9 +268,9 @@ public class Graphique {
     }
     
     public static void lectureMusiqueFond() {
-    	return ;
-		//musiqueFond = new Bruitage ("sound/bg/"+tableauMusiques[(int)(Math.random()*cptMus)]);
-    	//musiqueFond.lecture();
+    	//return ;
+		musiqueFond = new Bruitage ("sound/bg/"+tableauMusiques[(int)(Math.random()*cptMus)]);
+    	musiqueFond.lecture();
     }
 	
 	public static void stopMusiqueFond(){
