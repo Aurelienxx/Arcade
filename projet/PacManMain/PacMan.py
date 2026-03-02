@@ -36,7 +36,7 @@ while A :
             FIN = False
             break
         if event.type == py.KEYDOWN :
-            if event.key == py.K_SPACE :
+            if event.key == py.K_f :
                 A = False
                 break
 
@@ -55,7 +55,7 @@ while A and FIN:
             FIN = False
             break
         if event.type == py.KEYDOWN :
-            if event.key == py.K_SPACE :
+            if event.key == py.K_f :
                 A = False
                 break
         elif event.type == py.MOUSEBUTTONDOWN :
