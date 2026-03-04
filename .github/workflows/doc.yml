@@ -1,0 +1,55 @@
+name: Auto Documentation
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'docs/changelog_auto.md'
+
+jobs:
+  generate-doc:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: |
+          pip install requests
+
+      # 🔹 Installation d'Ollama
+      - name: Install Ollama
+        run: |
+          curl -fsSL https://ollama.com/install.sh | sh
+
+      # 🔹 Lancer Ollama en arrière-plan
+      - name: Start Ollama server
+        run: |
+          nohup ollama serve > ollama.log 2>&1 &
+          sleep 5
+
+      # 🔹 Télécharger le modèle
+      - name: Pull model
+        run: |
+          ollama pull gemma2
+
+      # 🔹 Générer la documentation
+      - name: Generate AI documentation
+        run: |
+          python scripts/generate_ai_doc.py
+
+      # 🔹 Commit si changement
+      - name: Commit documentation
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add docs/changelog_auto.md
+          git diff --cached --quiet || git commit -m "Auto-generated documentation [skip ci]"
+          git push
