@@ -37,19 +37,21 @@ def generate_summary(diff_text):
         print("❌ Ollama non accessible - changelog IA non généré")
         return None
 
-    prompt = f"""
+    try:
+        prompt = f"""
 Résume clairement et professionnellement les modifications suivantes
 pour un changelog technique structuré :
 
 {diff_text}
 """
-
-    response = client.generate_text(
-        model="phi3",
-        prompt=prompt
-    )
-
-    return response.response
+        response = client.generate_text(
+            model="phi3",
+            prompt=prompt
+        )
+        return response.response
+    except Exception as e:
+        print(f"❌ Erreur lors de la génération avec Ollama: {e}")
+        return None
 
 
 def write_changelog(summary):

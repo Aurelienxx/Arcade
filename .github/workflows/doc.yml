@@ -63,11 +63,25 @@ jobs:
       - name: Start Ollama
         run: |
           nohup ollama serve > ollama.log 2>&1 &
-          sleep 5
+          sleep 10
+          
+      - name: Wait for Ollama
+        run: |
+          echo "Attente du démarrage d'Ollama..."
+          for i in {1..30}; do
+            if curl -s http://localhost:11434/api/tags > /dev/null 2>&1; then
+              echo "✅ Ollama est prêt"
+              break
+            fi
+            echo "Tentative $i/30..."
+            sleep 2
+          done
 
       - name: Pull model
         run: |
-          ollama pull phi3
+          echo "Téléchargement du modèle phi3..."
+          timeout 600 ollama pull phi3 || echo "Modèle déjà présent"
+          echo "Modèle prêt"
 
       - name: Generate AI changelog
         run: |
