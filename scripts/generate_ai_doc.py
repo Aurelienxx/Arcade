@@ -83,8 +83,7 @@ pour un changelog technique structuré :
 """
         response = client.generate_text(
             model="neural-chat",
-            prompt=prompt,
-            stream=False
+            prompt=prompt
         )
         print("✅ Résumé généré avec IA")
         return response.response
