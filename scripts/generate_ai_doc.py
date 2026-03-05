@@ -50,7 +50,7 @@ def generate_simple_summary(diff_text):
         elif current_file and line.startswith('-') and not line.startswith('---'):
             files[current_file]['removed'] += 1
     
-    summary = "## 📋 Résumé des modifications\n\n"
+    summary = "## Résumé des modifications\n\n"
     
     if not files:
         summary += "Aucune modification détectée.\n"
@@ -68,7 +68,7 @@ def generate_simple_summary(diff_text):
 
 
 def generate_summary(diff_text):
-    client = OllamaWrapper(base_url="http://localhost:11434")
+    client = OllamaWrapper(base_url="http://localhost:11434", timeout_s=300.0)  # 5 minutes
 
     if not client.is_server_running():
         print("⚠️  Ollama non accessible")
@@ -97,7 +97,7 @@ def write_changelog(summary):
     os.makedirs("docs", exist_ok=True)
 
     with open("docs/changelog_auto.md", "w", encoding="utf-8") as f:
-        f.write("# 📜 Changelog automatique\n\n")
+        f.write("# Changelog automatique\n\n")
         f.write(summary)
         f.write("\n")
     print("✅ Changelog généré avec succès")
@@ -111,7 +111,7 @@ def main():
         print("\n⚠️  Aucun changement détecté.")
         return
 
-    print("\n🤖 Génération du résumé...")
+    print("\n Génération du résumé...")
     summary = generate_summary(diff)
 
     if summary is None:
@@ -119,7 +119,7 @@ def main():
         return
 
     write_changelog(summary)
-    print("\n✨ Documentation mise à jour avec succès!")
+    print("\n Documentation mise à jour avec succès!")
 
 
 if __name__ == "__main__":
