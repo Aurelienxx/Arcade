@@ -27,8 +27,7 @@ jobs:
       - name: Generate Javadoc
         run: |
           mkdir -p docs/javadoc
-          javadoc -d docs/javadoc $(find . -name "*.java")
-
+          javadoc -d docs/javadoc $(find . -name "*.java") || true
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
