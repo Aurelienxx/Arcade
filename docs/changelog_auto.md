@@ -1,18 +1,8 @@
 # Changelog automatique
 
- Aperçu des changements suivants pour un changelog technique structuré :
+ Résumé des changements suivants pour un changelog technique structuré :
 
-diff --git a/docs/index.md b/docs/index.md
-index a378099..b173bc5 100644
---- a/docs/index.md
-+++ b/docs/index.md
-@@ -2,6 +2,7 @@
- 
- ## Documentation technique
- - [Javadoc](./javadoc/index.html)
-+  - [Deepwiki](https://deepwiki.com/Aurelienxx/Arcade)
-  
- ## Installation
- - Voir doc_installation.md
-
-Ces changements ajoutent une nouvelle section dans la documentation technique pour DeepWiki (renommée "Deepwiki") et réorganise légèrement le contenu.
+1. Modification de la commande `find` pour générer le changelog de Java, en ajoutant `-path "./docs/*"` pour ne pas inclure les dossiers de documentation dans le nombre de fichiers Java.
+2. Modification du script `pip` pour installer le package `pdoc` en utilisant `pip install -q pdoc 2>/dev/null || true`, ce qui permet de continuer le script même si l'installation échoue.
+3. Mise à jour de la documentation Python avec le script `pdoc`, en changeant la commande pour utiliser `2>/dev/null` pour rediriger les erreurs vers le bitbucket et `|| true` pour continuer le script même si la génération échoue.
+4. Ajout d'un nouveau message d'échec dans le cas où aucun fichier Python n'est trouvé.
