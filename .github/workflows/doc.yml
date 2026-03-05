@@ -79,8 +79,8 @@ jobs:
 
       - name: Pull model
         run: |
-          echo "Téléchargement du modèle phi3..."
-          timeout 600 ollama pull phi3 || echo "Modèle déjà présent"
+          echo "Téléchargement du modèle neural-chat..."
+          timeout 900 ollama pull neural-chat || echo "Modèle déjà présent"
           echo "Modèle prêt"
 
       - name: Generate AI changelog

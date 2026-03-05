@@ -1,5 +1,6 @@
 import subprocess
 import os
+import re
 from ollama_wrapper import OllamaWrapper
 
 
@@ -30,12 +31,48 @@ def get_last_diff():
         return ""
 
 
+def generate_simple_summary(diff_text):
+    """Génère un changelog simple sans IA en parsant le diff"""
+    print("📄 Génération du changelog simple (sans IA)...")
+    
+    lines = diff_text.split('\n')
+    files = {}
+    current_file = None
+    
+    for line in lines:
+        if line.startswith('diff --git'):
+            current_file = re.search(r'b/(.*?)$', line)
+            if current_file:
+                current_file = current_file.group(1)
+                files[current_file] = {'added': 0, 'removed': 0, 'modified': True}
+        elif current_file and line.startswith('+') and not line.startswith('+++'):
+            files[current_file]['added'] += 1
+        elif current_file and line.startswith('-') and not line.startswith('---'):
+            files[current_file]['removed'] += 1
+    
+    summary = "## 📋 Résumé des modifications\n\n"
+    
+    if not files:
+        summary += "Aucune modification détectée.\n"
+        return summary
+    
+    summary += f"**{len(files)} fichier(s) modifié(s)**\n\n"
+    
+    for file, stats in files.items():
+        summary += f"- **{file}**"
+        if stats['added'] > 0 or stats['removed'] > 0:
+            summary += f" (+{stats['added']}/-{stats['removed']})"
+        summary += "\n"
+    
+    return summary
+
+
 def generate_summary(diff_text):
     client = OllamaWrapper(base_url="http://localhost:11434")
 
     if not client.is_server_running():
-        print("❌ Ollama non accessible - changelog IA non généré")
-        return None
+        print("⚠️  Ollama non accessible")
+        return generate_simple_summary(diff_text)
 
     try:
         prompt = f"""
@@ -45,13 +82,15 @@ pour un changelog technique structuré :
 {diff_text}
 """
         response = client.generate_text(
-            model="phi3",
-            prompt=prompt
+            model="neural-chat",
+            prompt=prompt,
+            stream=False
         )
+        print("✅ Résumé généré avec IA")
         return response.response
     except Exception as e:
-        print(f"❌ Erreur lors de la génération avec Ollama: {e}")
-        return None
+        print(f"⚠️  Ollama indisponible ({type(e).__name__})")
+        return generate_simple_summary(diff_text)
 
 
 def write_changelog(summary):
@@ -72,7 +111,7 @@ def main():
         print("\n⚠️  Aucun changement détecté.")
         return
 
-    print("\n🤖 Génération du résumé IA...")
+    print("\n🤖 Génération du résumé...")
     summary = generate_summary(diff)
 
     if summary is None:
