@@ -11,8 +11,22 @@ def get_last_diff():
             text=True,
             check=True
         )
-        return result.stdout
+        diff = result.stdout
+        
+        # Affiche le résumé des fichiers modifiés
+        print("\n📝 Fichiers modifiés:")
+        file_changes = subprocess.run(
+            ["git", "diff", "--name-only", "HEAD~1", "HEAD"],
+            capture_output=True,
+            text=True
+        )
+        if file_changes.stdout.strip():
+            for file in file_changes.stdout.strip().split('\n'):
+                print(f"  • {file}")
+        
+        return diff
     except subprocess.CalledProcessError:
+        print("⚠️  Impossible de récupérer le diff git")
         return ""
 
 
@@ -20,7 +34,7 @@ def generate_summary(diff_text):
     client = OllamaWrapper(base_url="http://localhost:11434")
 
     if not client.is_server_running():
-        print("Ollama non accessible")
+        print("❌ Ollama non accessible - changelog IA non généré")
         return None
 
     prompt = f"""
@@ -45,22 +59,26 @@ def write_changelog(summary):
         f.write("# 📜 Changelog automatique\n\n")
         f.write(summary)
         f.write("\n")
+    print("✅ Changelog généré avec succès")
 
 
 def main():
+    print("=== Analyse des modifications ===\n")
     diff = get_last_diff()
 
     if not diff.strip():
-        print("Aucun changement.")
+        print("\n⚠️  Aucun changement détecté.")
         return
 
+    print("\n🤖 Génération du résumé IA...")
     summary = generate_summary(diff)
 
     if summary is None:
+        print("❌ Erreur lors de la génération du résumé")
         return
 
     write_changelog(summary)
-    print("Changelog généré.")
+    print("\n✨ Documentation mise à jour avec succès!")
 
 
 if __name__ == "__main__":

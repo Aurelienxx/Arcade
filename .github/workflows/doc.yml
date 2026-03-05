@@ -26,8 +26,12 @@ jobs:
 
       - name: Generate Javadoc
         run: |
+          echo "=== Génération Javadoc ==="
           mkdir -p docs/javadoc
-          javadoc -d docs/javadoc $(find . -name "*.java") || true
+          JAVA_FILES=$(find . -name "*.java" -not -path "./docs/*" | wc -l)
+          echo "Fichiers Java trouvés: $JAVA_FILES"
+          find . -name "*.java" -not -path "./docs/*" -print0 | xargs -0 javadoc -d docs/javadoc 2>&1 || echo "Javadoc générée avec avertissements"
+          echo "Javadoc complétée"
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
@@ -35,7 +39,20 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip install requests
+          pip install requests pdoc
+
+      - name: Generate Python documentation
+        run: |
+          echo "=== Génération documentation Python ==="
+          PYTHON_FILES=$(find . -name "*.py" -not -path "./docs/*" -not -path "./.git/*" | wc -l)
+          echo "Fichiers Python trouvés: $PYTHON_FILES"
+          if [ $PYTHON_FILES -gt 0 ]; then
+            mkdir -p docs/python
+            pdoc -o docs/python scripts/ 2>/dev/null || echo "Attention: Erreur pdoc (module incomplet?)"
+            echo "Documentation Python générée"
+          else
+            echo "Aucun fichier Python trouvé"
+          fi
 
       - name: Install Ollama
         run: |
@@ -52,12 +69,20 @@ jobs:
 
       - name: Generate AI changelog
         run: |
+          echo "=== Génération Changelog IA ==="
           python scripts/generate_ai_doc.py
 
       - name: Commit documentation
         run: |
+          echo "=== Finalisation ==="
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add docs
-          git diff --cached --quiet || git commit -m "Auto-generated documentation [skip ci]"
-          git push
+          if ! git diff --cached --quiet; then
+            echo "Fichiers modifiés détectés"
+            git commit -m "Auto-generated documentation [skip ci]"
+            git push
+            echo "✅ Documentation poussée avec succès"
+          else
+            echo "ℹ️  Aucun changement de documentation"
+          fi
