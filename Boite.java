@@ -14,4 +14,5 @@ public abstract class Boite {
     public void setRectangle(Rectangle rectangle) {
 	this.rectangle = rectangle;
     }
+    
 }
