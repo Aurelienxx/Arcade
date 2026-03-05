@@ -9,5 +9,5 @@
 ##  Ajouter un jeu
 - Voir ajout_jeu.md
 
-## 📝 Changelog automatique
+## Changelog automatique
 - Voir changelog_auto.md
