@@ -30,9 +30,9 @@ jobs:
         run: |
           echo "=== Génération Javadoc ==="
           mkdir -p docs/javadoc
-          JAVA_FILES=$(find . -name "*.java" -not -path "./docs/*" | wc -l)
+          JAVA_FILES=$(find . -name "*.java" -not -path "./docs/*" -not -path "./javazoom/*" | wc -l)
           echo "Fichiers Java trouvés: $JAVA_FILES"
-          find . -name "*.java" -not -path "./docs/*" -print0 | xargs -0 javadoc -d docs/javadoc 2>&1 || echo "Javadoc générée avec avertissements"
+          find . -name "*.java" -not -path "./docs/*" -not -path "./javazoom/*" -print0 | xargs -0 javadoc -Xdoclint:none -d docs/javadoc -sourcepath .:. 2>&1 || echo "Javadoc générée avec avertissements"
           echo "Javadoc complétée"
       - name: Setup Python
         uses: actions/setup-python@v4
