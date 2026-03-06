@@ -1,3 +1,4 @@
+public class Menu {
     private int y;
     private int pos = 0;
 
