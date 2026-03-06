@@ -26,14 +26,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Generate Javadoc
-        run: |
-          echo "=== Génération Javadoc ==="
-          mkdir -p docs/javadoc
-          JAVA_FILES=$(find . -name "*.java" -not -path "./docs/*" -not -path "./javazoom/*" -not -path "./tests/*" | wc -l)
-          echo "Fichiers Java trouvés: $JAVA_FILES"
-          find . -name "*.java" -not -path "./docs/*" -not -path "./javazoom/*" -not -path "./tests/*" -print0 | xargs -0 javadoc -Xdoclint:none -d docs/javadoc 2>&1 || echo "Javadoc générée avec avertissements"
-          echo "Javadoc complétée"
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
@@ -42,19 +34,6 @@ jobs:
       - name: Install Python dependencies
         run: |
           pip install requests pdoc
-
-      - name: Generate Python documentation
-        run: |
-          echo "=== Génération documentation Python ==="
-          PYTHON_FILES=$(find . -name "*.py" -not -path "./docs/*" -not -path "./.git/*" | wc -l)
-          echo "Fichiers Python trouvés: $PYTHON_FILES"
-          if [ $PYTHON_FILES -gt 0 ]; then
-            mkdir -p docs/python
-            pdoc -o docs/python scripts/ 2>/dev/null || echo "Attention: Erreur pdoc (module incomplet?)"
-            echo "Documentation Python générée"
-          else
-            echo "Aucun fichier Python trouvé"
-          fi
 
       - name: Install Ollama
         run: |
@@ -82,6 +61,24 @@ jobs:
           echo "Téléchargement du modèle neural-chat..."
           timeout 900 ollama pull neural-chat || echo "Modèle déjà présent"
           echo "Modèle prêt"
+
+      - name: Generate Java Documentation with Ollama
+        run: |
+          echo "=== Génération documentation Java avec Ollama ==="
+          python scripts/generate_java_doc_with_ollama.py
+
+      - name: Generate Python documentation
+        run: |
+          echo "=== Génération documentation Python ==="
+          PYTHON_FILES=$(find . -name "*.py" -not -path "./docs/*" -not -path "./.git/*" | wc -l)
+          echo "Fichiers Python trouvés: $PYTHON_FILES"
+          if [ $PYTHON_FILES -gt 0 ]; then
+            mkdir -p docs/python
+            pdoc -o docs/python scripts/ 2>/dev/null || echo "Attention: Erreur pdoc (module incomplet?)"
+            echo "Documentation Python générée"
+          else
+            echo "Aucun fichier Python trouvé"
+          fi
 
       - name: Generate AI changelog
         run: |
