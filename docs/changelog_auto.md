@@ -1,6 +1,22 @@
 # Changelog automatique
 
- Différences dans le fichier .github/workflows/doc.yml :
-- La ligne 30 a été ajoutée pour exclure un répertoire supplémentaire lors de la recherche des fichiers .java.
-- La ligne 37 a été modifiée pour supprimer les contrôles de conformance du fichier JavaDoc (options `-Xdoclint:none` et `-sourcepath .:.` ajoutées).
-- La dernière ligne du bloc Javadoc a été ajoutée pour ajouter un message d'erreur en cas d'échec du processus de génération du Javadoc.
+ Aucune modification au changelog technique n'est spécifiée dans le fichier fourni. Cependant, voici les changements apportés au fichier `.github/workflows/doc.yml` :
+
+1. L'extrait de code a été modifié pour exclure les fichiers dans les répertoires `tests` et `javazoom` en plus des répertoires déjà listés `docs` et `javazoom` dans la recherche des fichiers `*.java`.
+
+diff --git a/.github/workflows/doc.yml b/.github/workflows/doc.yml
+index 6918f82..a54b4bd 100644
+--- a/.github/workflows/doc.yml
++++ b/.github/workflows/doc.yml
+@@ -30,9 +30,9 @@ jobs:
+         run: |
+           echo "=== Génération Javadoc ==="
+           mkdir -p docs/javadoc
+-          JAVA_FILES=$(find . -name "*.java" -not -path "./docs/*" -not -path "./javazoom/*" | wc -l)
++          JAVA_FILES=$(find . -name "*.java" -not -path "./docs/*" -not -path "./javazoom/*" -not -path "./tests/*" | wc -l)
+           echo "Fichiers Java trouvés: $JAVA_FILES"
+-          find . -name "*.java" -not -path "./docs/*" -not -path "./javazoom/*" -print0 | xargs -0 javadoc -Xdoclint:none -d docs/javadoc -sourcepath .:. 2>&1 || echo "Javadoc générée avec avertissements"
++          find . -name "*.java" -not -path "./docs/*" -not -path "./javazoom/*" -not -path "./tests/*" -print0 | xargs -0 javadoc -Xdoclint:none -d docs/javadoc 2>&1 || echo "Javadoc générée avec avertissements"
+           echo "Javadoc complétée"
+       - name: Setup Python
+         uses: actions/setup-python@v4
