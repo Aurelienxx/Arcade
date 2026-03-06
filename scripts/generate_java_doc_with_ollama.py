@@ -52,8 +52,7 @@ Génère la documentation en Markdown, sans blocs de code."""
     try:
         response = client.generate_text(
             model="neural-chat",
-            prompt=prompt,
-            timeout_override=300  # 5 minutes par fichier
+            prompt=prompt
         )
         return response.response
     except Exception as e:
