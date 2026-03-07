@@ -76,8 +76,21 @@ def generate_summary(diff_text):
 
     try:
         prompt = f"""
-Résume clairement et professionnellement les modifications suivantes
-pour un changelog technique structuré :
+        Tu es un assistant de développement chargé de générer un changelog.
+        
+        Ta mission est d'analyser les modifications apportées au code source du projet et de produire un résumé clair, concis et professionnel des changements.
+        Le résumé doit être structuré, mettant en évidence les fichiers modifiés, les types de changements (ajout, suppression, modification) et les impacts potentiels sur le projet.
+        Utilise un format de markdown pour structurer le changelog, avec des titres, des listes à puces et des sections claires.
+        
+        Règles à suivre :
+        - Écrit uniquement en français
+        - N'invente rien : base-toi uniquement sur les informations fournies dans le diff
+        - Sois précis et concis
+        - Mets en évidence les fichiers modifiés et les types de changements
+        - Le log doit être compréhensible pour un développeur qui découvre le projet
+
+
+        Voici les modifications à analyser :    
 
 {diff_text}
 """

@@ -62,6 +62,11 @@ jobs:
           timeout 900 ollama pull neural-chat || echo "Modèle déjà présent"
           echo "Modèle prêt"
 
+      - name: Generate AI changelog
+        run: |
+          echo "=== Génération Changelog IA ==="
+          python scripts/generate_ai_doc.py
+
       - name: Generate Java Documentation with Ollama
         run: |
           echo "=== Génération documentation Java avec Ollama ==="
@@ -80,10 +85,7 @@ jobs:
             echo "Aucun fichier Python trouvé"
           fi
 
-      - name: Generate AI changelog
-        run: |
-          echo "=== Génération Changelog IA ==="
-          python scripts/generate_ai_doc.py
+
 
       - name: Commit documentation
         run: |

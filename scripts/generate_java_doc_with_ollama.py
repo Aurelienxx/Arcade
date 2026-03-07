@@ -29,22 +29,51 @@ def read_java_file(filepath):
 
 def generate_class_doc(client, java_content, filename):
     """Génère la documentation pour une classe Java avec Ollama"""
-    prompt = f"""Tu es un expert en documentation Java. 
-Analyse le fichier Java suivant et génère une documentation claire et professionnelle.
+    prompt = f"""
+    Tu es un ingénieur logiciel senior spécialisé en Java et en documentation technique.
 
-Inclus:
-- Une description générale de la classe
-- Les attributs principaux
-- Les méthodes publiques avec leurs descriptions
-- Exemple d'utilisation si applicable
+    Ta mission est d'analyser une classe Java et de produire une documentation technique claire, concise et professionnelle en Markdown.
 
-Fichier: {filename}
+    Règles importantes :
+    - Écris uniquement en français.
+    - N'invente rien : base-toi uniquement sur le code fourni.
+    - Ne recopie jamais le code source.
+    - N'utilise pas de blocs de code.
+    - Sois précis et concis.
+    - La documentation doit être compréhensible pour un développeur qui découvre le projet.
 
-```java
-{java_content}
-```
+    Structure OBLIGATOIRE de la réponse :
 
-Génère la documentation en Markdown, sans blocs de code."""
+    ## Description
+    Explique le rôle de la classe dans le projet et son objectif principal.
+
+    ## Responsabilités
+    Liste les responsabilités principales de cette classe.
+
+    ## Attributs
+    Liste les attributs importants de la classe et explique leur rôle.
+
+    Format :
+    - nomAttribut : description
+
+    ## Méthodes publiques
+    Pour chaque méthode publique :
+    - nomMéthode(paramètres) : description courte de ce que fait la méthode.
+
+    Si une méthode retourne une valeur importante, précise-le.
+
+    ## Relations
+    Explique brièvement les interactions possibles avec d'autres classes si elles apparaissent dans le code.
+
+    ## Utilisation dans le projet
+    Explique dans quel contexte cette classe est probablement utilisée.
+
+    Classe analysée : {filename}
+
+    Code Java à analyser :
+
+    {java_content}
+    """
 
     try:
         response = client.generate_text(
@@ -74,7 +103,7 @@ def main():
     print("🚀 Génération documentation Java avec Ollama...\n")
     
     # Vérifier qu'Ollama est disponible
-    client = OllamaWrapper(base_url="http://localhost:11434", timeout_s=600.0)
+    client = OllamaWrapper(base_url="http://localhost:11434", timeout_s=1200.0)
     
     if not client.is_server_running():
         print("❌ Ollama n'est pas accessible!")
