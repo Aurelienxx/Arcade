@@ -7,16 +7,13 @@ import json
 
 
 def find_java_files():
-    """Parcourt les fichiers Java en excluant docs, javazoom et tests"""
+    """Trouve uniquement les fichiers .java à la racine du projet"""
     java_files = []
-    for root, dirs, files in os.walk("."):
-        # Exclure les répertoires
-        dirs[:] = [d for d in dirs if d not in ["docs", "javazoom", "tests", ".git"]]
-        
-        for file in files:
-            if file.endswith(".java"):
-                java_files.append(os.path.join(root, file))
-    
+
+    for file in os.listdir("."):
+        if file.endswith(".java") and os.path.isfile(file):
+            java_files.append(file)
+
     return sorted(java_files)
 
 
