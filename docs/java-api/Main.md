@@ -1,22 +1,18 @@
 # Main.java
 
- # Main.java
+ Description : La classe Main joue un rôle important dans le contexte du projet en étant le point d'entrée pour les programmes en cours d'exécution. Son objectif principal est de définir et gérer la boucle principale de l'application, en coordonnant différentes tâches.
 
-## Description générale de la classe
+Responsabilités :
+1. Gérer le cycle de vie des programmes en cours d'exécution.
+2. Assurer le bon fonctionnement des tâches et des processus en interaction avec d'autres classes du projet.
 
-`Main` est une classe Java simples qui crée une nouvelle instance de `Graphique` et lance une boucle infinie dans son `main` () méthode. Dans ce processus, la classe appelle la méthode `selectionJeu()` de `Graphique`. La classe `Main` est principalement responsable d'exécuter et maintenir le fonctionnement du programme.
+Attributs :
+- Main main : Identifie le thread principal de l'application.
 
-## Attributs principaux
-Le fichier `Main.java` ne contient pas d'attributs principaux.
+Méthodes publiques :
+- public static void main(String[] args) : Point d'entrée pour lancer l'application et gérer l'interaction avec les autres programmes en cours d'exécution.
 
-## Méthodes publiques avec leurs descriptions
+Relations :
+- Main est reliée à la classe Graphique, étant donné qu'elle appelle la méthode selectionJeu() de Graphique au sein de la boucle principale.
 
-Le fichier `Main.java` ne contient pas de méthodes publiques autres que le `main()` méthode.
-
-## Méthode principale (main) avec sa description
-
-`main()` est le point d'entrée du programme. Il est utilisé pour démarrer l'exécution du programme et instancie une nouvelle `Graphique` classe. Après cela, la classe entre dans une boucle infinie qui appelle la méthode `selectionJeu()` de la classe `Graphique`.
-
-## Exemple d'utilisation si applicable
-
-Comme ce n'est qu'un fichier Java avec une classe `Main`, le code pourrait être appelé directement par un programme principal, mais il n'est pas possible de fournir un exemple d'utilisation sans plus de détails sur le code ou le framework utilisé.
+Utilisation dans le projet : La classe Main est utilisée comme point d'entrée pour l'application, gérant la boucle principale et les interactions avec d'autres classes du projet, permettant ainsi le bon fonctionnement de l'application.

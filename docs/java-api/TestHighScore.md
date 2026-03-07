@@ -1,18 +1,24 @@
 # TestHighScore.java
 
- # TestHighScore
+ ## Description
+ La classe TestHighScore s'occupe de générer et gérer les classements dans un jeu. Elle permet de demander à l'utilisateur de saisir son nom, enregistrer le résultat du jeu et gérer le classement final.
 
-Cette classe sert à tester l'implémentation de la classe `HighScore`. Elle permet d'afficher une fenêtre, un clavier et de récupérer le fichier pour la sauvegarde du haut-score.
+## Responsabilités
+- Générer et gérer les classements dans un jeu.
+- Demander l'enregistrement du nom de l'utilisateur.
+- Enregistrer le score dans un fichier spécifique.
 
 ## Attributs
-Le programme n'utilise aucun attribut principal. Cependant, les classes et objets utilisés sont définis dans des classes externes.
+- Nom de l'utilisateur : utilisé pour enregistrer le classement et le nom du joueur.
 
 ## Méthodes publiques
-Le fichier n'a que un constructeur et une méthode publique. Cette méthode publique est :
+- **public static void main(String[] args)** : point d'entrée du programme, qui démarre le processus d'enregistrement des scores et gère le classement final.
 
-1. `static void main(String[] args)` : Cette méthode est le point d'entrée du programme. Elle initialise les objets de classe `Fenetre` et `ClavierBorneArcade`, puis appelle la méthode `HighScore.demanderEnregistrerNom()` pour demander l'enregistrement du haut-score.
+## Relations
+- Fenêtre : pour afficher l'interface graphique et gérer les événements clavier.
+- ClavierBorneArcade : pour capturer les événements clavier et gérer les interactions du joueur avec le jeu.
+- HighScore : pour demander l'enregistrement du nom du joueur et enregistrer le score dans le fichier.
+- Texture : pour afficher les images dans la fenêtre du jeu.
 
-## Utilisation
-Ce programme ne nécessite pas d'utilisation spécifique en dehors de son utilisation pour tester l'implémentation de la classe `HighScore`.
-
-Cependant, à partir de ce fichier, on pourrait déduire l'utilisation d'outils ou bibliothèques, tels que `MG2D`, `MG2D.geometrie` et `Texture`.
+## Utilisation dans le projet
+TestHighScore est une classe qui s'utilise dans le contexte d'un jeu pour gérer le classement et enregistrer les performances des joueurs. Elle permet d'établir un classement final et de célébrer les performances remarquables du jeu en les enregistrant dans un fichier.

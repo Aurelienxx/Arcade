@@ -1,61 +1,19 @@
 # LigneHighScore.java
 
- # LigneHighScore Class Documentation
+ Description : Cette classe, LigneHighScore, représente une ligne de classement dans le jeu. Son objectif principal est de conserver les informations sur les joueurs, leur nom et leur score.
 
-LigneHighScore est une classe Java destinée à gérer les données d'une ligne de scores. Elle permet de gérer différents types de représentations d'objets ainsi que leurs propriétés et méthodes.
+Responsabilités : La classe doit gérer les attributs nom et score pour les joueurs, permettre aux joueurs d'avoir une représentation précise de leurs scores et noms et assurer la gestion des attributs dans différents cas de figure (initialisation, construction par copie, construction à partir de chaine).
 
-## Attributs
+Attributs :
+- nomAttribut : nom : Représente le nom du joueur
+- nomAttribut : score : Représente le score du joueur
 
-### nom
-Type: String
-Description: Nom de la personne ayant obtenu le score. Par défaut est "AAA".
+Méthodes publiques :
+- LigneHighScore() : Construit une nouvelle ligne de classement, avec des valeurs initiales par défaut.
+- LigneHighScore(String nnom, int sscore) : Crée une nouvelle ligne de classement en utilisant les arguments fournis, vérifiant que le nom et le score soient appropriés.
+- LigneHighScore(LigneHighScore l) : Construit une nouvelle ligne de classement en copiant les valeurs de l'objet donné.
+- LigneHighScore(String str) : Construit une nouvelle ligne de classement à partir d'une chaine de caractères en suivant un format spécifique.
 
-### score
-Type: int
-Description: Score obtenu par la personne. Par défaut est 0.
+Relations : La classe LigneHighScore interagit avec d'autres classes pour gérer le classement global, les noms des joueurs, les scores, les méthodes de gestion de données, etc.
 
-## Constructeurs
-
-### LigneHighScore()
-Description: Construit un nouvel objet de type LigneHighScore avec un nom par défaut et un score par défaut.
-
-### LigneHighScore(String nnom, int sscore)
-Description: Construit un nouvel objet de type LigneHighScore avec un nom normalisé (maximum 3 caractères) ou par défaut "AAA" et un score normalisé (supérieur à 0 sinon sera 0).
-
-### LigneHighScore(LigneHighScore l)
-Description: Construit un nouvel objet de type LigneHighScore en copiant les valeurs des paramètres de la classe source.
-
-### LigneHighScore(String str)
-Description: Construit un nouvel objet de type LigneHighScore en analysant la chaîne de caractères passée en paramètre. Le nom sera normalisé et le score sera déduit. Si les données sont incorrectes, le nom sera par défaut "AAA" et le score sera 0.
-
-## Méthodes
-
-### int getScore()
-Description: Renvoie le score associé à l'objet.
-
-### String getNom()
-Description: Renvoie le nom associé à l'objet.
-
-### String toString()
-Description: Retourne une représentation de l'objet sous la forme nom-score, par exemple "Nom-Score".
-
-## Exemple d'Utilisation
-
-```java
-// Exemple de création d'un objet LigneHighScore à partir d'un autre objet
-LigneHighScore lhs1 = new LigneHighScore("Jean", 1000);
-LigneHighScore lhs2 = new LigneHighScore(lhs1);
-
-// Exemple de lecture et affichage d'un objet LigneHighScore
-LigneHighScore lhs3 = new LigneHighScore("John", 3000);
-System.out.println("Le joueur " + lhs3.getNom() + " a un score de " + lhs3.getScore() + " points.");
-
-// Exemple de lecture et affichage d'un objet LigneHighScore sous forme de chaîne
-LigneHighScore lhs4 = new LigneHighScore("Marie", 200);
-System.out.println("Le joueur " + lhs4.toString() + " a un score de " + lhs4.getScore() + " points.");
-
-// Exemple d'utilisation d'un constructeur pour le lire depuis une chaîne de caractères
-String ligne = "Sam-4000";
-LigneHighScore lhs5 = new LigneHighScore(ligne);
-System.out.println("Le joueur " + lhs5.getNom() + " a un score de " + lhs5.getScore() + " points.");
-```
+Utilisation dans le projet : Cette classe est utilisée pour conserver les informations sur les joueurs, leurs noms et leurs scores dans le contexte d'un jeu ou d'un système de classement. Elle est indispensable pour garder trace des performances des joueurs, faciliter le tri des classements et les récapitulatifs des résultats.

@@ -1,0 +1,3 @@
+# ClavierBorneArcade.java
+
+ Cette classe implémente la classe KeyListener pour gérer les événements clavier dans un système. Les méthodes keyTyped, keyPressed et keyReleased sont implémentées, mais la méthode keyTyped est inutile puisqu'elle n'est pas utilisée dans le code. Les autres méthodes permettent de suivre les interactions avec les touches du clavier, comme le relâchement ou la pression des touches et de mettre à jour les attributs appropriés.

@@ -1,21 +1,18 @@
 # BoiteSelection.java
 
- BoiteSelection est une classe Java qui étend Boite pour faciliter le sélection de différents éléments à travers différents jeux. Elle prend en compte différents événements du clavier et modifie l'affichage des éléments pour rendre la sélection plus simple et intuitif.
+ Description : La classe BoiteSelection représente une boîte dans un jeu, qui gère un pointeur et l'affichage de textes. Elle permet la sélection de différents éléments et gère leurs mouvements en fonction du pointeur.
 
-Voici une description générale de la classe:
-BoiteSelection est une classe Java qui étend Boite et permet aux utilisateurs de choisir et de sélectionner différents éléments dans un environnement de jeu. Elle prend en compte différentes interactions avec le clavier pour modifier l'affichage et la navigation des éléments. Elle utilise une police personnalisée pour afficher les textes et prend également en charge différents fonctions sonores.
+Responsabilités :
+- Gérer le pointeur
+- Gérer la sélection d'éléments en utilisant le pointeur
+- Gérer la position des textes à afficher
 
-Les attributs principaux de cette classe sont:
-1. Pointeur: Pointeur pointeur utilisé pour représenter l'élément sélectionné.
-2. Font: Police personnalisée utilisée pour afficher les textes.
+Attributs :
+- pointeur
 
-Les méthodes publiques de cette classe sont:
-1. selection(ClavierBorneArcade clavier): Méthode principale qui gère les interactions avec le clavier et les différentes actions de sélection.
-2. getPointeur(): Retourne le pointeur en cours.
-3. setPointeur(Pointeur pointeur): Définit le nouveau pointeur.
+Méthodes publiques :
+- selection(ClavierBorneArcade clavier) : Permet de gérer la sélection en fonction des déplacements du pointeur et de l'utilisation du joystick.
+- getPointeur() : Retourne la référence du pointeur.
+- setPointeur(Pointeur pointeur) : Définit le pointeur à modifier.
 
-Les méthodes utilisées dans la classe ne sont pas directement documentées, mais ils doivent être définis dans les classes qu'ils appellent.
-
-Exemple d'utilisation: Tout d'abord, un BoiteSelection doit être créé avec une rectangle, un pointeur et différentes classes. Ensuite, on va utiliser la méthode selection(ClavierBorneArcade clavier) et d'autres méthodes du clavier pour effectuer différentes actions de sélection. L'utilisation de cette classe est très intuitif et est facile à comprendre pour les utilisateurs.
-
-Cette classe est un exemple de classe de sélection personnalisée pour faciliter la navigation et la sélection dans un environnement de jeu.
+Relations : La classe BoiteSelection interagit avec d'autres classes pour gérer la navigation et l'affichage d'éléments dans un menu. Elle utilise des classes telles que ClavierBorneArcade, Rectangle, Pointeur, Texte et Bruitage.

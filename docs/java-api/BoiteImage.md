@@ -1,30 +1,23 @@
 # BoiteImage.java
 
- # BoiteImage
+ Description
+La classe BoiteImage représente une boîte à l'image, qui hérite de la classe abstraite Boite. Elle représente une zone géométrique délimitée par une image. Son objectif est de rendre visible une image dans un espace géométrique délimité.
 
-BoiteImage est une classe étendue de Boite dans le contexte d'un programme. Elle gère les aspects concernant une boîte qui contient une image.
+Responsabilités
+- Gérer le rendu de l'image en 2D à l'intérieur de la zone géométrique délimitée
+- Mettre à disposition la texture associée à l'image
 
-## Description générale
-La classe BoiteImage gère les aspects concernant une boîte contenant une image. Elle étend la classe Boite, ajoutant une texture nommée image à l'objet.
+Attributs
+- image : Représente la texture de l'image affichée à l'intérieur de la zone géométrique délimitée
 
-## Attributs principaux
-- image : texture représentant l'image contenue dans la boîte.
+Méthodes publiques
+- BoiteImage(Rectangle rectangle, String chemin) : Crée une nouvelle boîte à l'image en passant en paramètre le rectangle et le chemin du fichier d'image
+- getImage() : Renvoie la texture de l'image associée à l'objet
+- setImage(String chemin) : Charge une nouvelle image en remplaçant l'image actuelle par celle du fichier spécifié par le chemin
 
-## Méthodes publiques avec leurs descriptions
-- BoiteImage(Rectangle rectangle, String chemin) : Constructeur de BoiteImage prenant en paramètres un Rectangle représentant la position et la taille de la boîte et un chemin vers le fichier de l'image.
-- getImage() : Méthode qui retourne la texture de l'image.
-- setImage(String chemin) : Méthode qui permet de modifier la texture de l'image en chargant une nouvelle image de la même taille.
+Relations
+- BoiteImage interagit avec la classe Rectangle en utilisant son objet pour définir l'espace géométrique où doit être affichée l'image
+- BoiteImage interagit avec la classe Texture pour gérer la texture associée à l'image
 
-## Exemple d'utilisation
-Dans un programme de jeu 2D, les images pourraient être gérées en utilisant la classe BoiteImage. Par exemple :
-
-```java
-BoiteImage boiteImage = new BoiteImage(new Rectangle(new Point(0, 0), new Dimension(400, 320)), "images/monDossierImages/");
-boiteImage.setImage("images/monDossierImages/monImage.png");
-```
-Dans ce code, une boîte image est créée avec une position et une taille spécifiques, puis une image est chargée à partir du dossier images.
-
-## Sources et références
-- MG2D : bibliothèque de classes pour le développement de jeux 2D.
-- Boite : classe parent de BoiteImage et Boite.
-- Texture : classe servant à charger et gérer les images.
+Utilisation dans le projet
+La classe BoiteImage est probablement utilisée dans le contexte d'un jeu vidéo ou d'un environnement graphique, permettant de visualiser et manipuler des images en 2D dans des zones géométriques délimitées.
