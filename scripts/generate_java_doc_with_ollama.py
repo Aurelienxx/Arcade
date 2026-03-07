@@ -57,11 +57,24 @@ Génère la documentation en Markdown, sans blocs de code."""
         return None
 
 
+def generate_index(java_files):
+    """Génère un index de la documentation Java"""
+    index_path = "docs/java-api/index.md"
+
+    with open(index_path, "w", encoding="utf-8") as f:
+        f.write("# Documentation Java\n\n")
+
+        for java_file in java_files:
+            md_file = java_file.replace(".java", ".md")
+            name = os.path.basename(java_file)
+            f.write(f"- [{name}](./{md_file})\n")
+            
+
 def main():
     print("🚀 Génération documentation Java avec Ollama...\n")
     
     # Vérifier qu'Ollama est disponible
-    client = OllamaWrapper(base_url="http://localhost:11434", timeout_s=300.0)
+    client = OllamaWrapper(base_url="http://localhost:11434", timeout_s=600.0)
     
     if not client.is_server_running():
         print("❌ Ollama n'est pas accessible!")
@@ -103,7 +116,10 @@ def main():
             print(f"  ✅ Sauvegardé: {output_path}")
         except Exception as e:
             print(f"  ❌ Erreur sauvegarde: {e}")
-    
+
+    # Générer l'index de la documentation
+    generate_index(java_files)
+
     print(f"\n✨ {docs_generated}/{len(java_files)} documentation(s) générée(s)")
     return docs_generated > 0
 

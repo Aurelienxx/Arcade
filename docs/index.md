@@ -1,14 +1,14 @@
 # Borne d'arcade - Documentation
 
 ## Documentation technique
-- [Javadoc](./javadoc/index.html)
-- [Deepwiki](https://deepwiki.com/Aurelienxx/Arcade)
+- [Documentation Java (IA)](./java-api/index.md)
+- [Documentation Deepwiki](https://deepwiki.com/Aurelienxx/Arcade)
 
 ## Installation
-- Voir doc_installation.md
+- [Installation de la Borne](./doc_installation.md)
 
-##  Ajouter un jeu
-- Voir ajout_jeu.md
+## Ajouter un jeu
+- [Ajout d'un jeu](./ajout_jeu.md)
 
 ## Changelog automatique
-- Voir changelog_auto.md
+- [Log de commit](./changelog_auto.md)
