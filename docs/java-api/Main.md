@@ -1,41 +1,22 @@
 # Main.java
 
- # Main Class
+ # Main.java
 
-Main est une classe Java qui sert principalement à lancer l'application et exécuter des tâches liées à la génération de graphes. Cette classe est le point d'entrée de l'application, où le code principal s'exécute.
+## Description générale de la classe
 
-## Description générale
-
-La classe Main est conçue pour gérer la partie graphique de l'application. Elle contient un seul fichier Java et gère l'exécution du code principal.
+`Main` est une classe Java simples qui crée une nouvelle instance de `Graphique` et lance une boucle infinie dans son `main` () méthode. Dans ce processus, la classe appelle la méthode `selectionJeu()` de `Graphique`. La classe `Main` est principalement responsable d'exécuter et maintenir le fonctionnement du programme.
 
 ## Attributs principaux
+Le fichier `Main.java` ne contient pas d'attributs principaux.
 
-Cette classe ne possède pas de variables (attributs) déclarées ou utilisées explicitement.
+## Méthodes publiques avec leurs descriptions
 
-## Méthodes publiques
+Le fichier `Main.java` ne contient pas de méthodes publiques autres que le `main()` méthode.
 
-### main(String[])
+## Méthode principale (main) avec sa description
 
-C'est la méthode principale de cette classe. Elle est appelée lorsqu'un fichier Java est exécuté en tant que programme. Elle crée une instance de la classe Graphique et exécute une boucle infinie avec un bloc try-catch pour faire appel à la méthode selectionJeu() de la classe Graphique.
+`main()` est le point d'entrée du programme. Il est utilisé pour démarrer l'exécution du programme et instancie une nouvelle `Graphique` classe. Après cela, la classe entre dans une boucle infinie qui appelle la méthode `selectionJeu()` de la classe `Graphique`.
 
-## Exemple d'utilisation (si applicable)
+## Exemple d'utilisation si applicable
 
-Pour exécuter le programme, il suffit de créer un fichier principal appelé Main.java et d'inclure le code suivant :
-
-```java
-public class Main {
-    public static void main(String[] args) {
-        Graphique g = new Graphique();
-        while(true){
-            try{
-                // Thread.sleep(250);
-            }catch(Exception e){};
-            g.selectionJeu();
-        }
-    }
-}
-```
-
-Enregistrez et exécutez le fichier en ligne de commande en utilisant la commande appropriée pour votre IDE (par exemple, `java Main` pour Java).
-
-Remarquez que l'exemple de code inclut un thread.sleep() qui est commenté dans l'exemple présenté. Cette ligne peut être supprimée pour améliorer le fonctionnement de l'application.
+Comme ce n'est qu'un fichier Java avec une classe `Main`, le code pourrait être appelé directement par un programme principal, mais il n'est pas possible de fournir un exemple d'utilisation sans plus de détails sur le code ou le framework utilisé.

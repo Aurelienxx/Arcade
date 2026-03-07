@@ -1,46 +1,29 @@
 # Boite.java
 
- ## Classe Abstraite Boite
+ ## Classe Boite
 
-La classe abstraite **Boite** représente une boîte géométrique. Elle gère une structure interne en tant que rectangle. Cette classe est conçue pour être une abstraction d'une boîte plus complexe.
+### Description générale
+Classe abstraite représentant une boîte dans un contexte de 2D. La boîte est constituée d'un rectangle.
 
-## Attributs Principaux
+### Attributs principaux
+- rectangle: Rectangle représentant la boîte en 2D.
 
-1. `Rectangle rectangle` : Cette propriété stocke une instance de Rectangle, représentant le rectangle intérieur de la boîte.
+### Méthodes publiques
+- `Boite(Rectangle rectangle)`: Constructeur de la classe Boite, qui prend en paramètre un rectangle et l'utilise pour initialiser l'attribut rectangle de la classe.
+- `Rectangle getRectangle()`: Méthode qui retourne la valeur du rectangle représentant la boîte.
+- `void setRectangle(Rectangle rectangle)`: Méthode pour modifier la valeur du rectangle représentant la boîte.
 
-## Méthodes publiques
+### Exemple d'utilisation
+```java
+// Instanciation d'une boîte avec un rectangle
+Rectangle rectangle = new Rectangle(10, 5, 20, 30);
+Boite boite = new Boite(rectangle);
 
-1. `Boite(Rectangle rectangle)` : Constructeur prenant un Rectangle en argument, qui sera utilisé pour initialiser la propriété rectangle.
+// Affichage de la boîte et de son rectangle
+System.out.println("La boîte: " + boite);
+System.out.println("Le rectangle: " + boite.getRectangle());
 
-2. `Rectangle getRectangle()` : Méthode permettant d'accéder au Rectangle intérieur de la boîte.
-
-3. `void setRectangle(Rectangle rectangle)` : Méthode permettant de modifier le Rectangle intérieur de la boîte.
-
-## Exemple d'utilisation (si applicable)
-
-Pour utiliser la classe Boite, vous pouvez suivre ces étapes :
-
-1. Créer un Rectangle correspondant à la boîte :
-
-   ```java
-   Rectangle rectangle = new Rectangle(width, height);
-   ```
-
-2. Créer une instance de Boite en passant le Rectangle en paramètre au constructeur :
-
-   ```java
-   Boite boite = new Boite(rectangle);
-   ```
-
-3. Accéder aux informations du Rectangle intérieur de la boîte :
-
-   ```java
-   Rectangle interneRectangle = boite.getRectangle();
-   ```
-
-4. Modifier le Rectangle intérieur de la boîte :
-
-   ```java
-   Rectangle nouvelleDimension = new Rectangle(largeur, hauteur);
-   boite.setRectangle(nouvelleDimension);
-   ```
+// Modification du rectangle de la boîte
+Boite.setRectangle(rectangle.scale(2.0));
+System.out.println("Le nouveau rectangle: " + boite.getRectangle());
+```
